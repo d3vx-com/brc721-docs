@@ -1,0 +1,135 @@
+---
+sidebar_position: 1
+---
+
+# Create collection
+
+
+Before you take the plunge and deploy your first collection with BRC721, we strongly recommend introducing yourself with the [specification](/docs/specification). Taking the time to understand the main technical aspects will help build a simple mental model and will significantly improve your understanding of the protocol.
+
+
+## Basics
+The protocol consists of three types of manifests:
+
+📜 **Collection Manifest**  
+
+This is the definitive source of information for your collection. It contains essential data such as max supply, max per address, and max block height. Consider this manifest as an immutable contract on Ethereum.
+
+👁️ **Reveal Manifest**  
+
+This is a reliable source for your metadata. BRC721 relies on the ERC721 [metadata standard](https://docs.opensea.io/docs/metadata-standards#metadata-structure). The metadata is stored off-chain and linked to the collection. Similar to ERC721 baseURI and tokenURI properties.
+
+Just like in ERC721, you have the option to update the metadata URL to incorporate a reveal mechanic. This is achieved by deploying another reveal manifest with a higher priority. This priority is controlled by the weight field in the manifest.
+
+💎 **Inscription Manifest**  
+
+The inscription manifest functions similarly to an NFT token. It refers back to the collection manifest. It includes the initial owner's address and price in sats. The initial owner's address comes in handy when you have an allowlist, and you want to restrict minting to specific addresses.
+
+
+## Verification
+
+How do we guarantee the linked nature of all these manifests and validate the data? This is where public and private(secret) keys prove vital.
+
+All the manifests and their content are linked and signed with your private key. Our playground can generate them for you. It is important to save them in secure storage. You will need these keys to, for example, create a new reveal manifest or issue new inscription manifests(NFTs). A good practice is to have a separate pair of keys for every collection you inscribe and manage.
+
+But what happens if someone attempts to cheat? For instance, what if someone modifies the inscription price or initial owner's address, or simply refuses to pay for the NFT?
+
+If the inscription content is altered, the signature becomes invalid, thus breaching the specification. If the payment is not made, it constitutes a violation of the specification rules. Consequently, the inscription will not be verified and included within the collection. The person who made these changes will be left with a worthless text inscription. The same outcome awaits anyone trying to mint beyond the allowed limit or if the max supply has been reached.
+
+**Enough theory! Let's create our collection.**
+
+
+## Preparing wallet and keys
+
+- Download and top up the [OrdinalSafe wallet](https://ordinalsafe.xyz/) with at least 40000 SATS (0.0004BTC). It is the only wallet that supports BRC-721 at this moment, more integrations are in the pipeline.
+
+- Go to the [BRC-721 Playground](https://brc721.com/playground) and generate your Public and Private(Secret) Keys.
+<img src="/img/generating-keys.png" alt="generating keys" className="showcase" />
+
+- Press **Edit**, and then copy and save your keys to secure storage. You will need them later to issue new tokens.
+
+- Press on **Connect Wallet** to be able to inscribe manifests.
+<img src="/img/connect-wallet.png" alt="connect wallet" className="showcase" />
+
+Now you are all set and ready to create your first collection!
+
+
+## Inscribing collection
+
+As previously highlighted, the collection manifest operates as the single source of truth for the collection. Its immutable nature signifies that it can't be modified once it has been created.
+
+The image below shows that we have declared a collection with the OG name and symbol. We have specified my wallet as a payment address to receive token payments. In addition, we have set a maximum supply of 10,000 tokens, with a limit of 5 tokens per address.
+
+**We encourage you to choose a unique name and symbol for your collection to avoid duplicates.**
+
+We have deliberately left the maximum block height field unfilled. This method is suitable for open edition collections, where a defined maximum supply is absent, but a time constraint exists.
+
+The **Signer Public Key** field was populated automatically because we generated keys beforehand.
+<img src="/img/collection-manifest.png" alt="collection manifest" className="showcase" />
+
+Now you can press **Inscribe**. It will open OrdinalSafe, where you can pay inscription fees and inscribe your collection manifest.
+<img src="/img/ordinal-safe-collection-inscription.png" alt="ordinalsafe collection inscription" className="showcase" />
+
+After finishing the above process, you will get a transaction hash next to the Inscribe button. This indicates that your transaction has been sent.
+<img src="/img/collection-tx-hash.png" alt="collection transaction hash" className="showcase" />
+
+By clicking on it, you can see the status of your transaction. In our case, it is **Pending**. This indicates that the block containing your transaction has yet to be mined. It's necessary to wait until this status updates to **Confirmed**.
+
+<img src="/img/tx-pending.png" alt="transaction pending" className="showcase" />
+<img src="/img/tx-confirmed.png" alt="transaction confirmed" className="showcase" />
+
+Now one of the protocol servers will find it and store it in the database. It usually takes a minute. After that, it will be available on the [Explorer page](https://brc721.com/explorer).
+<img src="/img/og.png" alt="og" className="showcase" />
+
+**Congratulations! You inscribed your first BRC721 collection!** But let's keep going. Currently, the collection is empty. It doesn't have any tokens or metadata.
+
+
+## Inscribing metadata
+
+Before users are allowed to mint tokens, we would like to display a placeholder for the token's metadata. Once the minting process is completed and all tokens have been purchased, we will replace this placeholder with the actual metadata, including various attributes.
+
+We've prepared an API for this tutorial that returns the token metadata by ID: [https://brc721.com/api/og/1](https://brc721.com/api/og/1). After the mint, we will use the same endpoint to switch placeholder metadata to the real metadata so we don't have to inscribe a new reveal manifest.
+
+Still, you can inscribe a new reveal manifest with a higher weight, especially when you store your metadata on decentralized storage like IPFS and cannot change the content behind the link.
+
+To inscribe your reveal manifest, go to the [Playground](https://brc721.com/playground) and fill out the Reveal Manifest form.
+<img src="/img/reveal-manifest.png" alt="reveal manifest" className="showcase" />
+
+You will notice that we haven't added the token IDs to the metadata URL field. It is because the indexer will calculate the token ID automatically and create the link corresponding to every token. Similar to ERC721.
+
+You can find your collection inscription ID via any Ordinals explorer or simply go to our API [https://brc721.rest/collections](https://brc721.rest/collections) and check the latest deployed collections. You will find an object like this with all the information about your collection.
+<img src="/img/find-collection-id.png" alt="find collection ID" className="showcase" />
+
+When all the fields are filled out, we press **Inscribe** button below the Reveal Manifest form, pay the inscription fees, and wait for the transaction to be confirmed.
+
+When the transaction is confirmed in a couple of minutes, one of the servers will index it and update the collections API so you will see your URL.
+<img src="/img/find-collection-id-update.png" alt="find collection ID update" className="showcase" />
+
+**Congratulations! Now we have the metadata connected to our collection.** The next step is to mint the tokens.
+
+
+## Inscribing tokens
+
+First, as the collection creator, we will inscribe one token for ourselves. The exact process will apply to every access list address inscription, but the form should have the price field populated. In our case, it is empty to mint for free.
+<img src="/img/collection-owner-mint.png" alt="collection owner mint" className="showcase" />
+
+To start a public mint, we must specify the price and the collection inscription ID field. The initial owner address field should be empty.
+
+**Remember that it won't be possible to pause the public mint.** It will end when all the supply is minted. All new inscriptions after that won't be a part of the collection.
+
+In those cases, you will have to make a manual refund. We are working on a script to formulate a refund transaction so you can make all refunds in a few clicks.
+
+<img src="/img/public-mint.png" alt="public mint" className="showcase" />
+
+For public mint, you don't want to inscribe yourself but **Download** the inscription file and share it with your community or submit it to a BRC721 community marketplace.
+
+Allowing people to inscribe via our [Inscribe](https://www.brc721.com/inscribe) page or you can build your personal mint website. We plan to open source a minting button so that you can use this code as a starting point.
+
+In the screenshot below, we have connected the wallet, added the inscription file, and clicked the **Inscribe** button. As you can see, we need to send the token's price when inscribing it.
+<img src="/img/inscribe-page.png" alt="inscribe page" className="showcase" />
+
+**This is it! Congratulations!**
+
+You now know how to create collections, inscribe metadata, and mint your own collection tokens!
+
+We are excited for the success of your project and eagerly anticipate the innovative creations you will build using our protocol. Please join us in our [Discord](https://discord.com/invite/brc721) discord to discuss the project in greater detail.

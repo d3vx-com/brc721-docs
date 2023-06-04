@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "BRC721"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "version"]
+    },
+    "type": {
+      "const": "collection"
+    },
+    "name": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "paymentAddress": {
+      "type": "string"
+    },
+    "signerPublicKey": {
+      "type": "string"
+    },
+    "maxSupply": {
+      "type": "number",
+      "minimum": 1
+    },
+    "maxPerAddress": {
+      "type": "number",
+      "minimum": 1
+    },
+    "maxBlockHeight": {
+      "type": "number",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "symbol",
+    "protocol",
+    "paymentAddress",
+    "signerPublicKey"
+  ]
+}

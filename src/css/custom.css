@@ -1,0 +1,60 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #ff9900;
+  --ifm-color-primary-dark: #db7a00;
+  --ifm-color-primary-darker: #bf6a00;
+  --ifm-color-primary-darkest: #a15b00;
+  --ifm-color-primary-light: #ffae33;
+  --ifm-color-primary-lighter: #ffbf66;
+  --ifm-color-primary-lightest: #ffcf99;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #ff8c00;
+  --ifm-color-primary-dark: #db7500;
+  --ifm-color-primary-darker: #bf6400;
+  --ifm-color-primary-darkest: #a15500;
+  --ifm-color-primary-light: #ff9d33;
+  --ifm-color-primary-lighter: #ffa755;
+  --ifm-color-primary-lightest: #ffc488;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  line-height: 2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Mono", monospace;
+  line-height: 1.5;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.footer {
+  background-color: #242526;
+}
+
+[data-theme="dark"] .footer {
+  background-color: var(--ifm-background-surface-color);
+}
+
+.showcase {
+  padding: 2rem;
+  margin: 1rem 0;
+  background-color: white;
+  border: 1px solid #eaecef;
+}
