@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info:
+  title: BRC721 REST API
+  version: ""
+servers:
+  - url: https://brc721.rest
+
+paths:
+  /collections:
+    get:
+      parameters:
+        - name: cursor
+          in: query
+          description: Cursor for pagination
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of collections to return
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collections'
+              
+  /collections/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          description: Collection ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+
+  /inscriptions:
+    get:
+      parameters:
+        - name: cursor
+          in: query
+          description: The cursor ID for pagination
+          schema:
+            type: string
+        - name: valid
+          in: query
+          description: Filter by inscription validity
+          schema:
+            type: boolean
+        - name: collectionId
+          in: query
+          description: Filter by collection ID
+          schema:
+            type: string
+        - name: inscriberAddress
+          in: query
+          description: Filter by inscriber address
+          schema:
+            type: string
+        - name: initialOwnerAddress
+          in: query
+          description: Filter by initial owner address
+          schema:
+            type: string
+        - name: ids
+          in: query
+          description: Comma-separated list of inscription IDs to retrieve
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: "Maximum number of inscriptions to retrieve (default: 50)"
+          schema:
+            type: integer
+            default: 50
+        - name: sort
+          in: query
+          description: 'Sorting order ("desc" or "asc", default: "desc")'
+          schema:
+            type: string
+            default: desc
+        - name: order
+          in: query
+          description: 'Sorting field ("createdAt" or "updatedAt", default: "createdAt")'
+          schema:
+            type: string
+            default: createdAt
+      responses:
+        '200':
+          description: Inscriptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Inscription'
+                  cursor:
+                    type: string
+
+  /inscriptions/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the inscription to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Inscription details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blockHeight:
+                    type: integer
+                  transactionIndex:
+                    type: integer
+                  position:
+                    type: integer
+                  price:
+                    type: integer
+                  verificationErrors:
+                    type: array
+                    items:
+                      type: string
+                  inscriberAddress:
+                    type: string
+                  version:
+                    type: string
+                  collectionId:
+                    type: string
+                  initialOwnerAddress:
+                    type: string
+                    nullable: true
+                  id:
+                    type: string
+                  valid:
+                    type: boolean
+                  createdAt:
+                    type: string
+                    format: date-time
+                  reindexing:
+                    type: boolean
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  metadata:
+                    type: object
+                  revealWeight:
+                    type: integer
+                  media:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                        format: url
+                      thumbnail:
+                        type: string
+                        format: url
+                  tokenURI:
+                    type: string
+                    format: url
+
+components:
+  schemas:
+    Collections:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collection'
+        cursor:
+          type: string
+    
+    Inscriptions:
+      type: object
+      properties:
+        inscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Inscription'
+        cursor:
+          type: string
+
+    Collection:
+      type: object
+      properties:
+        blockHeight:
+          type: integer
+        transactionIndex:
+          type: integer
+        maxSupply:
+          type: integer
+        maxPerAddress:
+          type: integer
+        maxBlockHeight:
+          type: integer
+          nullable: true
+        version:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+        paymentAddress:
+          type: string
+        signerPublicKey:
+          type: string
+        inscriberAddress:
+          type: string
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        reindexing:
+          type: boolean
+        updatedAt:
+          type: string
+          format: date-time
+        position:
+          type: integer
+        baseURI:
+          type: string
+          nullable: true
+    
+    Inscription:
+      type: object
+      properties:
+        blockHeight:
+          type: integer
+        transactionIndex:
+          type: integer
+        position:
+          type: integer
+        price:
+          type: integer
+        verificationErrors:
+          type: array
+          items:
+            type: string
+        inscriberAddress:
+          type: string
+        version:
+          type: string
+        collectionId:
+          type: string
+        initialOwnerAddress:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

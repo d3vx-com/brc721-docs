@@ -44,17 +44,27 @@ const config = {
           editUrl:
             "https://github.com/d3vx-com/brc721-docs/tree/main/packages/create-docusaurus/templates/shared/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/d3vx-com/brc721-docs/tree/main/packages/create-docusaurus/templates/shared/",
-        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
+    ],
+    [
+      "redocusaurus",
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: "openapi/openapi.yaml",
+            route: "/api/",
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: "#1890ff",
+        },
+      },
     ],
   ],
 
@@ -85,6 +95,11 @@ const config = {
             to: "/docs/specification",
             position: "left",
             label: "Specification",
+          },
+          {
+            to: "/api",
+            position: "left",
+            label: "API",
           },
           {
             href: "https://github.com/d3vx-com/brc721-docs",
