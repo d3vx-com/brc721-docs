@@ -71,6 +71,38 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: "twitter:title",
+          content: "BRC721 Docs",
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          name: "twitter:description",
+          content: "BRC721 documentation",
+        },
+
+        {
+          name: "twitter:image",
+          content: "https://docs.brc721.com/img/embed.png",
+        },
+        {
+          name: "twitter:creator",
+          content: "@BRC_721",
+        },
+        {
+          name: "twitter:site",
+          content: "@BRC_721",
+        },
+        {
+          name: "twitter:domain",
+          content: "https://docs.brc721.com",
+        },
+      ],
+
       // Replace with your project's social card
       // image: "img/docusaurus-social-card.jpg",
       navbar: {
