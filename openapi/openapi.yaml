@@ -87,7 +87,7 @@ paths:
             type: string
         - name: ids
           in: query
-          description: Comma-separated list of inscription IDs to retrieve
+          description: Comma-separated list of inscription IDs to retrieve. Max 10 IDs at a time
           schema:
             type: string
         - name: limit
