@@ -1,0 +1,35 @@
+---
+sidebar_position: 2
+---
+
+# Setup Discord verification bot
+
+## Prerequisites
+
+### Discord Bot
+
+1. Log into your Discord account go to "User Settings" and click on “Advanced” in the sidebar. Then activate “Developer Mode”. Then click on “Discord API”
+2. Click on "Applications" in the sidebar and then click “New Application” on the top and give it a name. On "General Information" tab you will find "APPLICATION ID" (<mark>DISCORD_APP_ID</mark>). Then click on “Bot” in the sidebar. Click "Reset Token" to get bot's <mark>DISCORD_TOKEN</mark>
+3. Click on "OAuth2" in the sidebar, then "URL Generator". Choose **bot** in "SCOPES" sections and **Administrator** in "BOT PERMISSIONS" section. Cope generated URL on the bottom of the page and use it to add your bot to server.
+
+### DigitalOcean
+
+1. Create account (use this [link](https://m.do.co/c/fd492ca49952) to get $200)
+2. Follow [tutorial](https://docs.digitalocean.com/reference/doctl/how-to/install) to setup doctl
+
+## Deploy Bot
+
+1. Clone [repository](https://github.com/d3vx-com/brc721-verification-bot)
+2. Update `.do/prod.spec.yml` set <mark>DISCORD_APP_ID</mark> and <mark>DISCORD_TOKEN</mark>
+   <img
+     src="/img/prod-spec-yml.png"
+     alt="prod-spec-yml"
+     className="screenshot"
+   />
+3. Run `doctl apps create --spec .do/prod.spec.yml` from the root of the repository
+
+## Setup Bot
+
+1. Add verification channel using `/bcr721 channel` command
+2. Add one or more collection-role pairs via `/bcr721 add` command
+3. Use `/bcr721 list` to get list of all added collection-role pairs

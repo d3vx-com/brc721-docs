@@ -58,3 +58,8 @@ h6 {
   background-color: white;
   border: 1px solid #eaecef;
 }
+
+.screenshot {
+  margin: 1rem 0;
+  width: 700px;
+}

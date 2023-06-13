@@ -27,13 +27,13 @@ paths:
             minimum: 1
             maximum: 100
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Collections'
-              
+                $ref: "#/components/schemas/Collections"
+
   /collections/{id}:
     get:
       parameters:
@@ -44,12 +44,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Collection'
+                $ref: "#/components/schemas/Collection"
 
   /inscriptions:
     get:
@@ -103,7 +103,7 @@ paths:
             type: string
             default: createdAt
       responses:
-        '200':
+        "200":
           description: Inscriptions retrieved successfully
           content:
             application/json:
@@ -113,7 +113,7 @@ paths:
                   inscriptions:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Inscription'
+                      $ref: "#/components/schemas/Inscription"
                   cursor:
                     type: string
 
@@ -127,7 +127,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Inscription details retrieved successfully
           content:
             application/json:
@@ -184,6 +184,35 @@ paths:
                     type: string
                     format: url
 
+  /bitcoin/verifymessage:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  required: true
+                  type: string
+                signature:
+                  required: true
+                  type: string
+                address:
+                  required: true
+                  type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      result:
+                        type: boolean
 components:
   schemas:
     Collections:
@@ -192,17 +221,17 @@ components:
         collections:
           type: array
           items:
-            $ref: '#/components/schemas/Collection'
+            $ref: "#/components/schemas/Collection"
         cursor:
           type: string
-    
+
     Inscriptions:
       type: object
       properties:
         inscriptions:
           type: array
           items:
-            $ref: '#/components/schemas/Inscription'
+            $ref: "#/components/schemas/Inscription"
         cursor:
           type: string
 
@@ -247,7 +276,7 @@ components:
         baseURI:
           type: string
           nullable: true
-    
+
     Inscription:
       type: object
       properties:
