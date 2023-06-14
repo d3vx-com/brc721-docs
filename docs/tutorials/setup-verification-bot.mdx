@@ -19,14 +19,21 @@ sidebar_position: 2
 
 ## Deploy Bot
 
-1. Clone [repository](https://github.com/d3vx-com/brc721-verification-bot)
-2. Update `.do/prod.spec.yml` set <mark>DISCORD_APP_ID</mark> and <mark>DISCORD_TOKEN</mark>
+1. Fork [repository](https://github.com/d3vx-com/brc721-verification-bot)
+2. [Connect](https://github.com/apps/digitalocean/installations/new) your github account to DigitalOcean
+3. Replace <mark>repo:</mark> values in `.do/prod.spec.yml` to point to your forked repository
+   <img src="/img/set-repo.png" alt="prod-spec-yml" className="screenshot" />
+4. Set <mark>DISCORD_APP_ID</mark> and <mark>DISCORD_TOKEN</mark> in `.do/prod.spec.yml`
    <img
      src="/img/prod-spec-yml.png"
      alt="prod-spec-yml"
      className="screenshot"
    />
-3. Run `doctl apps create --spec .do/prod.spec.yml` from the root of the repository
+5. Run `doctl databases create verification-postgresql`
+6. Run `doctl databases create verification-redis --engine redis`
+7. Wait for databases to be created. Check status with `doctl databases list`. Status should be 'online'
+8. Run `doctl apps create --spec .do/prod.spec.yml` from the root of the repository
+9. Once the app is deployed, you can start setting up the bot.
 
 ## Setup Bot
 
