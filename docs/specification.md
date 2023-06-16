@@ -66,6 +66,45 @@ content: JSON string
   collectionInscriptionId: string
 ```
 
+## MetadataMerkleRootManifest
+
+   The MetadataMerkleRootManifest is an Ordinal inscription linked to the CollectionManifest. It includes a DER-encoded signature and the `collectionInscriptionId` for secure linking to the CollectionManifest. Additionally, it contains a Merkle root that links each ID in the specified BRC721 collection to a JSON version of the metadata. This JSON representation may differ from the metadata returned by the `metadataURL` and typically includes optimized image formats to reduce file sizes.
+
+   In the initial version, the proposal suggests using base64-encoded images integrated into the JSON. Future versions may introduce more flexible referencing of inscriptions in the JSON.
+
+   An example for the Merkle root creation can be found in this [repository](https://github.com/etherleif/brc721-onchain-metadata).
+
+```json
+protocol
+  name: "BRC721"
+  version: string
+
+type: "metadataMerkleRoot"
+contentSignature: string
+
+content: JSON string
+  collectionInscriptionId: string
+  merkleRoot: string
+  weight: number
+```
+
+## MetadataProofManifest
+
+   The MetadataProofManifest contains the metadata and the corresponding Merkle proof. It includes the protocol details, such as the name and version, along with the `inscriptionId` (InscriptionManifest), `proof`, and `metaData` fields. A `contentSignature` is not needed because anyone may upload on-chain metadata for a given inscription. The ownership is still determined by who owns the InscriptionManifest.
+
+```json
+protocol
+  name: "BRC721"
+  version: string
+
+type: "metadataProof"
+
+content: JSON string
+  inscriptionId: string
+  proof: string[]
+  metaData: JSON string
+```
+
 ## Declaration
 
 Each manifest and manifest content key value is a JSON string that must be valid against the declared [json-schema.org Draft 4](https://json-schema.org) to prevent inconsistency.
@@ -75,6 +114,10 @@ Each manifest and manifest content key value is a JSON string that must be valid
 - [InscriptionManifest.content.schema.json](/schemas/InscriptionManifest.content.schema.json)
 - [RevealManifest.schema.json](/schemas/RevealManifest.schema.json)
 - [RevealManifest.content.schema.json](/schemas/RevealManifest.content.schema.json)
+- [MetadataMerkleRootManifest.schema.json](/schemas/MetadataMerkleRootManifest.schema.json)
+- [MetadataMerkleRootManifest.content.schema.json](/schemas/MetadataMerkleRootManifest.content.schema.json)
+- [MetadataProofManifest.schema.json](/schemas/MetadataProofManifest.schema.json)
+- [MetadataProofManifest.content.schema.json](/schemas/MetadataProofManifest.content.schema.json)
 
 To validate schemas, use one of the proposed validators: [https://json-schema.org/implementations.html#validators](https://json-schema.org/implementations.html#validators).
 
@@ -116,6 +159,23 @@ To ensure that a RevealManifest is a part of the collection, the underlying cond
 4. RevealManifest.content.collectionInscriptionId is equal to CollectionManifest's inscription id
 5. The last RevealManifest inscription if more than one exists to update the metadata
 6. RevealManifest.content.weight is greater than corresponding CollectionManifest's previous RevealManifest weight
+
+## Merkle Root Manifest Verification
+
+1. MerkleRootManifest must be valid against the corresponding json schema
+2. MerkleRootManifest.protocol.version is equal to CollectionManifest.protocol.version
+3. MerkleRootManifest.contentSignature is verifiable with CollectionManifest.signerPublicKey and MerkleRootManifest.content string
+4. MerkleRootManifest.content.collectionInscriptionId is equal to CollectionManifest's inscription id
+5. No more valid InscriptionManifests can be inscribed because either CollectionManifest.maxSupply or CollectionManifest.maxBlockHeight is reached
+6. MerkeRootManifest.content.weight is greater than corresponding CollectionManifest's previous MerkleRootManifest weight
+
+## Metadata Proof Manifest Verification
+
+1. MetadataProofManifest must be valid against the corresponding json schema
+2. MetadataProofManifest.protocol.version is equal to CollectionManifest.protocol.version
+3. MetaDataProofManifest.inscriptionId points to a valid InscriptionManifest
+4. MetaDataProofManifest.proof is a valid Merkle proof for the MetaDataProofManifest.content.inscriptionId and MetaDataProofManifest.content.metaData and can be verified with MetaDataProofManifest.content.merkleRoot using keccak256 hash function
+5. MetaDataProofManifest.metaData is a valid JSON string
 
 
 
