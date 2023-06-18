@@ -84,12 +84,12 @@ const config = {
           content: "summary_large_image",
         },
         {
-          name: "twitter:description",
+          name: "og:description",
           content: "BRC721 documentation",
         },
 
         {
-          name: "twitter:image",
+          name: "og:image",
           content: "https://docs.brc721.com/img/embed.png",
         },
         {
@@ -166,6 +166,10 @@ const config = {
           {
             title: "Community",
             items: [
+              {
+                label: "Dune",
+                href: "https://dune.com/otterolie/brc721",
+              },
               {
                 label: "Discord",
                 href: "http://discord.com/invite/brc721",
