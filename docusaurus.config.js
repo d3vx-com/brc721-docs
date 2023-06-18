@@ -137,6 +137,11 @@ const config = {
             label: "API",
           },
           {
+            to: "/press",
+            position: "left",
+            label: "Press",
+          },
+          {
             href: "https://github.com/d3vx-com/brc721-docs",
             label: "GitHub",
             position: "right",
