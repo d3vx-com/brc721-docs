@@ -62,4 +62,4 @@ This is the one and only BRC721 all other projects resembling the same name are 
 
 ## Are the images stored on-chain ❓
 
-Images are currently stored off-chain using [IPFS] (https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) at the moment but there is a proposal shared [here] (https://github.com/onchainguy-eth/brc721-docs/tree/on-chain-metadata) that proposes a change to BRC721 that permits for on-chain image storage.
+Images are currently stored off-chain using [IPFS](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) at the moment but there is a proposal shared [here](https://github.com/onchainguy-eth/brc721-docs/tree/on-chain-metadata) that proposes a change to BRC721 that permits for on-chain image storage.
