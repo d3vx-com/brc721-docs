@@ -21,7 +21,7 @@ BRC721 guarantees legitimate and verifiable collections for collectors. No prepa
 
 To inscribe, you will need to download Ordinal Safe and either import your existing seed phrase from your other hot wallet (Xverse or Unisat) or ensure you have enough Sats to inscribe your first BRC721.
 
-Videos tutorial coming soon - in the meantime, you can see them on our [(Discord)](https://discord.com/invite/brc721) 
+Videos tutorial coming soon - in the meantime, you can see them on our [Discord](https://discord.com/invite/brc721) 
 
 ## What is OG Collection ❓
 
