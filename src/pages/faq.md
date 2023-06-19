@@ -1,26 +1,26 @@
 ---
-title: FAQ
+title: FAQ ❓
 description: Frequently asked questions about BRC721 protocol 
 hide_table_of_contents: true
 ---
 
 # FAQ
 
-What is BRC721❓
+What is BRC721 ❓
 
 BRC721 is a decentralized and scalable protocol for creating unique collections on Bitcoin.
 
 Essentially, it allows for storing images off-chain while still ensuring safe transactions of the Ordinal that contains a link to the metadata. This is similar to 95% of NFT collections, providing an alternative to the existing on-chain solution.
 
-Why is it the solution❓
+Why is it the solution ❓
 
-BRC721 guarantees legitimate and verifiable collections for collectors. No prepayment is required, and the minter pays for the asset while the collection creator collects the Sats. This eliminates the need for using a side chain to collect funds before paying exorbitant fees to inscribe the entire collection without knowing if it will sell out.
+BRC721 guarantees legitimate and verifiable collections for collectors. No prepayment is required, and the collector pays for the asset while the collection creator collects the Sats. This eliminates the need for using a side chain to collect funds before paying exorbitant fees to inscribe the entire collection without knowing if the collection will sell out.
 
-How to mint❓
+How to mint ❓
 
-To mint, you'll need to download Ordinal Safe and either import your existing seed phrase from your other hot wallet (Xverse or Unisat) or ensure you have enough Sats to mint your first BRC721.
+To mint, you'll need to download Ordinal Safe and either import your existing seed phrase from your another hot wallet (Xverse or Unisat) or ensure you have enough Sats to inscribe your first BRC721.
 
-Videos tutorial coming soon
+Videos tutorial coming soon - in the meantime, you can see them on our [(Discord)](https://discord.com/invite/brc721) 
 
 What is OG Collection?
 
@@ -28,34 +28,38 @@ OG Collection is collection number #16 minted on BRC721 with a total supply of 1
 
 Where can I buy BRC721 collections?
 
-You can buy BRC721 collections from the following sources:
+You can buy BRC721 collections from the following websites:
 
-Please note the following are community built projects
+Please note the following are community-built projects.
 
-🟠[BRC721scan.io](https://www.brc721scan.io/)
+🟠 [BRC721scan.io](https://www.brc721scan.io/)
 
-🟠[BRC-721.pro](https://brc-721.pro/) (Secondary Marketplace for buying OG Collection)
+🟠 [BRC-721.pro](https://brc-721.pro/) (Secondary Marketplace for buying OG Collection)
 
-🟠[BRCLaunchpad.io](https://brclaunchpad.io/)
+🟠 [BRCLaunchpad.io](https://brclaunchpad.io/)
 
-🟠[Alpha.8ased.com](https://alpha.8ased.com/)
+🟠 [Alpha.8ased.com](https://alpha.8ased.com/)
 
-How can I create my own collection❓
+How can I create my own collection ❓
 
 Please visit our playground by following this [link](https://tutorial.brc721.com/). The tutorial is easy to follow, if you have any questions, feel free to ask on our [(Discord)](https://discord.com/invite/brc721) server.
 
-Can I update my metadata❓
+Can I update my metadata ❓
 
 Yes, you can update your collection's metadata if you are the owner. Simply visit [brc721.com/playground](https://brc721.com/playground) for more information.
 
-How do I create a mint page❓
+How do I create a mint page ❓
 
-What is a recursive inscription, and will you be implementing it❓
+Coming soon, at the moment you can supply your JSON file to one of the links above and they will add it to their website to allow for easy minting.
 
-With so many different derivative chains of BRC721, how do I know this is the right one❓
+What is a recursive inscription, and will you be implementing it ❓
 
-This is the correct one and only BRC721 all other projects resembling the same name are derivatives
+■ ■ ■ ■ ■ ■ ■ ■
 
-Are the images stored on chain❓
+With so many different derivative chains of BRC721, how do I know this is the right one ❓
 
-Images are currently stored off chain using [IPFS] (https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) at the moment but there is a proposal shared [here] (https://github.com/onchainguy-eth/brc721-docs/tree/on-chain-metadata) that proposes a change to BRC721 that permits for on-chain image storage.
+This is the one and only BRC721 all other projects resembling the same name are derivatives.
+
+Are the images stored on-chain ❓
+
+Images are currently stored off-chain using [IPFS] (https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) at the moment but there is a proposal shared [here] (https://github.com/onchainguy-eth/brc721-docs/tree/on-chain-metadata) that proposes a change to BRC721 that permits for on-chain image storage.
