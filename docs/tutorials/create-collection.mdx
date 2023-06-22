@@ -34,11 +34,11 @@ But what happens if someone attempts to cheat? For instance, what if someone mod
 
 If the inscription content is altered, the signature becomes invalid, thus breaching the specification. If the payment is not made, it constitutes a violation of the specification rules. Consequently, the inscription will not be verified and included within the collection. The person who made these changes will be left with a worthless text inscription. The same outcome awaits anyone trying to mint beyond the allowed limit or if the max supply has been reached.
 
-**Enough theory! Let's create our collection.**
+**Enough theory! Let's create our first collection.**
 
 ## Preparing wallet and keys
 
-- Download and top up the [OrdinalSafe wallet](https://ordinalsafe.xyz/) with at least 40000 SATS (0.0004BTC). It is the only wallet that supports BRC721 at this moment, more integrations are in the pipeline.
+- Download and top up [OrdinalSafe wallet](https://ordinalsafe.xyz/) with at least 40000 SATS (0.0004BTC). It is the only wallet that supports BRC721 at this moment, more integrations are in the pipeline.
 
 - Go to the [BRC721 Playground](https://brc721.com/playground) and generate your Public and Private(Secret) Keys.
 
@@ -148,7 +148,7 @@ When the transaction is confirmed in a couple of minutes, one of the servers wil
 
 ## Inscribing tokens
 
-First, as the collection creator, we will inscribe one token for ourselves. The exact process will apply to every access list address inscription, but the form should have the price field populated. In our case, it is empty to mint for free. But if you to sell the token, you can specify the price in SATS.
+First, as the person creating the collection, we will start by inscribing a token for ourselves. This exact process will be replicated for each inscription related to the access list addresses, although those will typically include a value in the price field. For our particular situation, we'll leave the price field blank, enabling us to mint at no cost. However, if your intention is to sell the token, the price must be specified in SATS.
 **_Important!_ The price must be higher than 546 SATS(e.g. >=547 SATS).**
 
 <img
