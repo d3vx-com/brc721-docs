@@ -1,7 +1,8 @@
 openapi: 3.0.0
 info:
   title: BRC721 REST API
-  version: ""
+  version: "1.0.0"
+  description: "Rate limit: 120 requests/min. For higher limit, apply for API key: https://forms.gle/Jh3KbNHyTHWMmcko6"
 servers:
   - url: https://brc721.rest
 
