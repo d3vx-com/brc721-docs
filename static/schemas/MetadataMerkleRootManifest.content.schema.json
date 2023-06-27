@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "collectionInscriptionId": {
+      "type": "string"
+    },
+    "merkleRoot": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "number"
+    }
+  },
+  "required": ["collectionInscriptionId", "merkleRoot", "weight"]
+}
