@@ -9,7 +9,7 @@ sidebar_position: 2
 ### Discord Bot
 
 1. Log into your Discord account go to "User Settings" and click on “Advanced” in the sidebar. Then activate “Developer Mode”. Then click on “Discord API”
-2. Click on "Applications" in the sidebar and then click “New Application” on the top and give it a name. On "General Information" tab you will find "APPLICATION ID" (<mark>DISCORD_APP_ID</mark>). Then click on “Bot” in the sidebar. Click "Reset Token" to get bot's <mark>DISCORD_TOKEN</mark>
+2. Click on "Applications" in the sidebar and then click “New Application” on the top and give it a name. On "General Information" tab you will find "APPLICATION ID" (DISCORD_APP_ID). Then click on “Bot” in the sidebar. Click "Reset Token" to get bot's DISCORD_TOKEN
 3. Click on "OAuth2" in the sidebar, then "URL Generator". Choose **bot** in "SCOPES" sections and **Administrator** in "BOT PERMISSIONS" section. Cope generated URL on the bottom of the page and use it to add your bot to server.
 
 ### DigitalOcean
@@ -21,14 +21,21 @@ sidebar_position: 2
 
 1. Fork [repository](https://github.com/d3vx-com/brc721-verification-bot)
 2. [Connect](https://github.com/apps/digitalocean/installations/new) your github account to DigitalOcean
-3. Replace <mark>repo:</mark> values in `.do/prod.spec.yml` to point to your forked repository
+3. Replace repo: values in `.do/prod.spec.yml` to point to your forked repository
    <img src="/img/set-repo.png" alt="prod-spec-yml" className="screenshot" />
-4. Set <mark>DISCORD_APP_ID</mark> and <mark>DISCORD_TOKEN</mark> in `.do/prod.spec.yml`
+4. Set DISCORD_APP_ID and DISCORD_TOKEN in `.do/prod.spec.yml`.
+
+   <strong>
+     Do not commit these changes to your repository because it will expose your
+     bot token!
+   </strong>
+
    <img
      src="/img/prod-spec-yml.png"
      alt="prod-spec-yml"
      className="screenshot"
    />
+
 5. Run `doctl databases create verification-postgresql`
 6. Run `doctl databases create verification-redis --engine redis`
 7. Wait for databases to be created. Check status with `doctl databases list`. Status should be 'online'
