@@ -13,3 +13,11 @@ hide_table_of_contents: true
 📰 [Bitcoin Ordinals could become more like NFTs thanks to BRC721](https://cryptoslate.com/bitcoin-ordinals-could-become-more-like-nfts-thanks-to-brc-721/)
 
 🇨🇳 [Behind the skyrocketing BRC721 you must know](https://www.fx168news.com/article/215653)
+
+🐦  [Say Hello to BRC721 by @Jiurn](https://twitter.com/Jiurn/status/1666477279415791619)
+
+🐦  [We come in peace by @OtterOlie](https://twitter.com/BRC_721/status/1667140054995681281)
+
+🐦  [Re-introducing BRC721: The future of Digital Collectables by @OtterOlie](https://twitter.com/BRC_721/status/1671097703755816960)
+
+🐦  [Why BRC721 by @blade_heaven](https://twitter.com/blade_heaven/status/1669272792238522368?s=20)
