@@ -20,4 +20,6 @@ hide_table_of_contents: true
 
 🐦  [Re-introducing BRC721: The future of Digital Collectables by @OtterOlie](https://twitter.com/BRC_721/status/1671097703755816960)
 
-🐦  [Why BRC721 by @blade_heaven](https://twitter.com/blade_heaven/status/1669272792238522368?s=20)
+🐦  [Why BRC721 by @blade_heaven](https://twitter.com/blade_heaven/status/1669272792238522368)
+
+🐦  [BRC721 = Bitcoin NFTs @blade_heaven](https://twitter.com/BRC_721/status/1675895584215949314)
